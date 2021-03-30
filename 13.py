@@ -34,6 +34,27 @@ class Solution:
 
         return sum
 
+    def romanToInt2(self, s: str) -> int:
+
+        roman = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+
+        # record previously added value in prev for comparison
+        # if curr value > prev, it means we have numerals like 'IV', 'IX', 'XL', 'CD', 'CM' etc.
+        # if so, subtract previously added value from ans and add the difference between curr and prev.
+        prev = -1
+        sum = 0
+
+        for x in s:
+          curr = roman[x]
+          if prev != -1 and curr > prev:
+              sum-= prev
+              sum+= curr - prev
+          else:
+              sum+= curr
+          prev = curr
+
+        return sum
+
 # take in a string of roman numerals
 # convert roman to integer
 # I > 1
