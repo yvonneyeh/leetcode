@@ -37,3 +37,6 @@ def uniqueMorseRepresentations2(self, words: List[str]) -> int:
             result.add(to_morse(word))
 
         return len(result)
+
+# Runtime: 20 ms, faster than 99.74% of Python3 online submissions for Unique Morse Code Words.
+# Memory Usage: 14.5 MB, less than 29.41% of Python3 online submissions for Unique Morse Code Words.
