@@ -22,3 +22,6 @@ class Solution:
 
         sort_list.next = l1 or l2
         return head.next
+
+# Runtime: 40 ms, faster than 42.18% of Python3 online submissions for Merge Two Sorted Lists.
+# Memory Usage: 14.4 MB, less than 32.31% of Python3 online submissions for Merge Two Sorted Lists.
