@@ -1,3 +1,8 @@
+# 224. Basic Calculator
+# Given a string s representing an expression, implement a basic calculator to evaluate it.
+
+# https://www.youtube.com/watch?v=081AqOuasw0
+
 def calculate(self, s: str) -> int:
         """
         1. Take 3 containers:
@@ -50,3 +55,74 @@ def calculate(self, s: str) -> int:
                 res +=stack.pop()
                 num = 0
         return res + num*sign
+
+# Runtime: 76 ms, faster than 69.35% of Python3 online submissions for Basic Calculator.
+# Memory Usage: 15.7 MB, less than 63.10% of Python3 online submissions for Basic Calculator.
+
+class Solution:
+    def calculate(self, s: str) -> int:
+
+        # only digits, +, -, (), ' '
+        # we will ignore spaces
+        # keep track of current sum
+        # can only be plus or minus, keep track of positive or neg sign
+        # use stack to keep track of calls waiting to happen
+        # append items to stack to keep track of what hasn't happened
+        # pop items from stack once we see close paren
+
+
+        stack = []
+        result = 0
+        num = 0
+        sign = 1
+
+        for i in range(len(s)):
+            c = s[i]
+            if c.isdigit():
+                num = num*10 + int(c)
+            elif c in '+-':
+                result += num*sign
+                sign = -1 if c == '-' else 1
+                num = 0
+            elif c == '(':
+                stack.append(result)
+                stack.append(sign)
+                result = 0
+                sign = 1
+            elif c == ')':
+                result +=sign*num
+                result *=stack.pop()
+                result +=stack.pop()
+                num = 0
+        return result + num*sign
+
+
+    def withQuincy(s):
+
+        stack = []
+        result = 0
+        num = ""
+        sign = 1
+
+        for char in s:
+            if char == '-':
+        	    sign = -1
+            if char.isdigit():
+                num += char
+            elif num != "":
+                if char in '+-':
+                    result += num*sign
+                    sign = -1 if char == '-' else 1
+                    num = ""
+                elif char == '(':
+                    stack.append(result)
+                    stack.append(sign)
+                    result = 0
+                    sign = 1
+                elif char == ')':
+                    result +=sign*num
+                    result *=stack.pop()
+                    result +=stack.pop()
+                    num = ""
+
+        return result + num*sign
