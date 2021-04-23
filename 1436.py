@@ -20,3 +20,6 @@ class Solution:
         for start, stop in paths:
             if stop not in routes:
                 return stop
+
+# Runtime: 52 ms, faster than 71.61% of Python3 online submissions for Destination City.
+# Memory Usage: 14.5 MB, less than 18.34% of Python3 online submissions for Destination City.
