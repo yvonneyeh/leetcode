@@ -15,3 +15,8 @@ class Solution:
 
 # Runtime: 32 ms, faster than 54.43% of Python3 online submissions for Jewels and Stones.
 # Memory Usage: 14.3 MB, less than 45.91% of Python3 online submissions for Jewels and Stones.
+
+
+    def numJewelsInStones2(self, jewels: str, stones: str) -> int:
+
+        return sum(i in jewels for i in stones)
