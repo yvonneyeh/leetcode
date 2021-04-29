@@ -126,3 +126,10 @@ class Solution:
                     num = ""
 
         return result + num*sign
+
+
+# if char.isdigit():
+#             start = i
+#             while i < len(s) and s[i].isdigit():
+#                 i += 1
+# 	number = s[start:i]
