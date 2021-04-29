@@ -20,3 +20,6 @@ class Solution:
     def numJewelsInStones2(self, jewels: str, stones: str) -> int:
 
         return sum(i in jewels for i in stones)
+
+# Runtime: 28 ms, faster than 81.10% of Python3 online submissions for Jewels and Stones.
+# Memory Usage: 14.3 MB, less than 45.91% of Python3 online submissions for Jewels and Stones.
