@@ -12,3 +12,6 @@ class Solution:
                 count += 1
 
         return count
+
+# Runtime: 32 ms, faster than 54.43% of Python3 online submissions for Jewels and Stones.
+# Memory Usage: 14.3 MB, less than 45.91% of Python3 online submissions for Jewels and Stones.
