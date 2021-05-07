@@ -7,6 +7,48 @@ class Solution:
         num = 1
         lst = [(r-1, c), (r+1, c), (r, c-1), (r, c+1)]
         for row, col in lst:
+            if row >= 0 and col >= 0 and row < len(grid) and col < len(grid[row]) and grid[row][col] == 1:
+                num += self.dfs(grid, row, col)
+        return num
+
+    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
+        area_islands = 0
+        for r in range(len(grid)):
+            for c in range(len(grid[r])):
+                if grid[r][c] == 1:
+                    area_islands = max(area_islands, self.dfs(grid, r, c))
+        return area_islands
+
+# Runtime: 140 ms, faster than 65.13% of Python3 online submissions for Max Area of Island.
+# Memory Usage: 17.3 MB, less than 23.66% of Python3 online submissions for Max Area of Island.
+
+# def dfs(map, r, c):
+#         # What if we can’t mutate map?
+#         map[r][c] = 'x'
+#         num = 1
+#         lst = [(r-1, c), (r+1, c), (r, c-1), (r, c+1)]
+#         for row, column in lst:
+#             if row >= 0 and column >= 0 and row < len(map) and column < len(map[row]) and map[row][column] == 'o':
+#                 num += dfs(map, row, column)
+#         return num
+#
+# def getSizeOfLargestIsland(map):
+#         island_area = 0
+#         for r in range(len(map)):
+# 	# Is there a guarantee that the map is a square?
+#             for c in range(len(map[r])):
+#                 if map[r][c] == 'o':
+#                     island_area = max(island_area, dfs(map, r, c))
+#         return island_area
+
+
+class Solution:
+
+    def dfs(self, grid, r, c):
+        grid[r][c] = 0
+        num = 1
+        lst = [(r-1, c), (r+1, c), (r, c-1), (r, c+1)]
+        for row, col in lst:
             if row >= 0 and col >= 0 and row < len(grid) and col < len(grid[0]) and grid[row][col] == 1:
                 num += self.dfs(grid, row, col)
         return num
