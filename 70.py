@@ -15,7 +15,7 @@
 # n = 2
 
 class Solution:
-    @cache # without this,
+    @cache # without this, runtime won't pass
     def climbStairs(self, n: int) -> int:
         if n == 0:
             return 0
