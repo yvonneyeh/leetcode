@@ -47,7 +47,7 @@ nums = [1,2,1]
 def get_concatenation_pythonic(nums):
     return nums * 2
 
-def getConcatenation(nums):
+def getConcatenation1(nums):
     ans = nums
     for num in nums:
     #     # if index >= 1 and index <= 1000 and value >= 1 and value <= 1000:
@@ -58,3 +58,13 @@ def getConcatenation(nums):
     #     #     return []
     return ans
     # return nums * 2
+
+def getConcatenation2(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        r = []
+        for i in range(0,2*n):
+            if i<n:
+                r.append(nums[i])
+            else:
+                r.append(nums[i-n])
+        return r
