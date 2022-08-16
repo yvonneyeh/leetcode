@@ -1,5 +1,5 @@
 class Solution:
-    def defangIPaddr(self, address: str) -> str:
+    def defangIPaddrString(self, address: str) -> str:
 
 
         # 1. look at every char of string
@@ -17,6 +17,15 @@ class Solution:
                 defangIP += "[.]"
         return defangIP
 
+    def defangIPaddrList(self, address: str) -> str:
+        result = []
+        for character in address:
+            if character == '.':
+                result.append('[.]')
+            else:
+                result.append(character)
+        return ''.join(result)
+
 
 # Runtime: 28 ms, faster than 78.88% of Python3 online submissions for Defanging an IP Address.
 # Memory Usage: 14.3 MB, less than 35.09% of Python3 online submissions for Defanging an IP Address.
@@ -25,6 +34,6 @@ class Solution:
     def defangIPaddr_replace(self, address: str) -> str:
 
         return address.replace('.','[.]')
-# 
+#
 # Runtime: 24 ms, faster than 93.90% of Python3 online submissions for Defanging an IP Address.
 # Memory Usage: 14 MB, less than 87.04% of Python3 online submissions for Defanging an IP Address.
