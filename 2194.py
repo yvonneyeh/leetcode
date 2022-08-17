@@ -1,3 +1,4 @@
+# 2194. Cells in a Range on an Excel Sheet
 class Solution:
     def cellsInRange(self, s: str) -> List[str]:
         a, b = map(str, s.split(":"))
