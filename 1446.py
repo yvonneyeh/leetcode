@@ -1,3 +1,30 @@
+# 1446. Consecutive Characters
+"""
+Easy
+
+The power of the string is the maximum length of a non-empty substring that contains only one unique character.
+
+Given a string s, return the power of s.
+
+Example 1:
+
+Input: s = "leetcode"
+Output: 2
+Explanation: The substring "ee" is of length 2 with the character 'e' only.
+Example 2:
+
+Input: s = "abbcccddddeeeeedcba"
+Output: 5
+Explanation: The substring "eeeee" is of length 5 with the character 'e' only.
+
+
+Constraints:
+
+1 <= s.length <= 500
+s consists of only lowercase English letters.
+
+"""
+
 class Solution:
     def maxPower(self, s: str) -> int:
         previous = ''
@@ -12,16 +39,3 @@ class Solution:
             previous = letter
 
         return max(max_count, count)
-
-    class Solution:
-    def maxPower(self, s: str) -> int:
-        max_count, count = 0, 1
-        char = ""
-        for i in s:
-            if char == i:
-                count += 1
-            else:
-                count = 1
-            char = i
-            max_count = max(max_count, count)
-        return max_count
