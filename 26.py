@@ -22,16 +22,21 @@ class Solution:
 
         return l
 
+    # Runtime: 172 ms
+    # Memory: 15.5 MB
+
 
     def remove_duplicates(nums):
       # index of the next non-duplicate element
-      next_non_duplicate = 1
-
+      count = 1
       i = 0
       while i < len(nums):
-        if nums[next_non_duplicate - 1] != nums[i]:
-          nums[next_non_duplicate] = nums[i]
-          next_non_duplicate += 1
+        if nums[count - 1] != nums[i]:
+          nums[count] = nums[i]
+          count += 1
         i += 1
 
-      return next_non_duplicate
+      return count
+
+      # Runtime: 94 ms
+      # Memory: 15.7 MB
