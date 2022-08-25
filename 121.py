@@ -32,10 +32,11 @@ Constraints:
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
 
-        # keep track of a sliding window of when to buy and sell
+        # keep track of a when to buy and sell at the same time as we loop through prices
         # buy at min price, sell at max price
-
-        # find min & max price
+        # check current profit as we iterate, update max profit
+        # if buy is greater than sell, we swap buy to sell (lowest price)
+        # increment sell pointer
 
         buy, sell = 0, 1
         max_profit = 0
