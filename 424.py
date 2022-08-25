@@ -117,3 +117,46 @@ def characterReplacement(s: str, k: int) -> int:
 
 print("ABAB", 2, "-> 4 :", characterReplacement("ABAB", 2))
 print("AABABBA", 1, "-> 4:", characterReplacement("AABABBA", 1))
+
+
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        window_start, max_length, max_repeat_letter_count = 0, 0, 0
+        frequency_map = {}
+
+        for window_end in range(len(s)):
+            right_char = s[window_end]
+
+            if right_char not in frequency_map:
+                frequency_map[right_char] = 0
+
+            frequency_map[right_char] += 1
+
+            max_repeat_letter_count = max(
+                max_repeat_letter_count, frequency_map[right_char])
+
+            if (window_end - window_start + 1 - max_repeat_letter_count) > k:
+                left_char = s[window_start]
+                frequency_map[left_char] -= 1
+                window_start += 1
+
+            max_length = max(max_length, window_end - window_start + 1)
+
+        return max_length
+
+    def characterReplacement2(self, s: str, k: int) -> int:
+        count = {}
+        longest = 0
+        max_freq = 0
+        l = 0
+
+        for r, letter in enumerate(s):
+            count[letter] = 1 + count.get(letter, 0)
+            max_freq = max(max_freq, count[letter])
+
+            if (r - l + 1) - max_freq > k:
+                count[s[l]] -= 1
+                l += 1
+
+            longest = max(longest, r - l + 1)
+        return longest

@@ -34,7 +34,7 @@ s consists of English letters, digits, symbols and spaces.
 """
 
 class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
+    def lengthOfLongestSubstring_dict(self, s: str) -> int:
         seen = {}
         max_length = 0
         start = 0
@@ -47,3 +47,21 @@ class Solution:
             seen[character] = end
 
         return max_length
+
+    def lengthOfLongestSubstring_set(self, s: str) -> int:
+        # keep track of start and end index for substring
+        # use dictionary to save letters we've seen
+        # save longest length
+
+        start = 0
+        seen = set()
+        longest = 0
+
+        for end, letter in enumerate(s):
+            while letter in seen:
+                seen.remove(s[start])
+                start += 1
+            seen.add(letter)
+            longest = max(longest, end - start + 1)
+
+        return longest
