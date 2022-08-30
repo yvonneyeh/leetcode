@@ -14,6 +14,6 @@ class Solution:
             maxSum = max(maxSum, curSum)
 
         return maxSum
-    
+
 # Runtime: 1266 ms, faster than 18.30% of Python3 online submissions for Maximum Subarray.
 # Memory Usage: 28.6 MB, less than 9.67% of Python3 online submissions for Maximum Subarray.
