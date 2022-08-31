@@ -28,11 +28,20 @@ Constraints:
 
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
+        # greedy algo - work backwards
+        # see if there is a -1 jump that can reach
+        # set max pointer to last item in list
+        # loop through the list backwards, checking if it possible to reach the pointer
+        # if the number is greater than the goal it means we can reach it
 
         target = len(nums) - 1
 
+        # start, stop, step
         for i in range(len(nums) - 2, -1 , -1 ):
+            print("target", target)
+            print("i", i)
             if i + nums[i] >= target:
+                print("i + nums[i]", i + nums[i])
                 target = i
 
         return target == 0
