@@ -23,7 +23,7 @@ class Solution:
     string_length = len(s)
     result = []
     # bold[i] := True if s[i] should be bolded
-    bold = [0] * n
+    bold = [0] * string_length
 
     bold_end = -1  # s[i:bold_end] should be bolded
     for i in range(string_length):
@@ -47,3 +47,6 @@ class Solution:
         i += 1
 
     return ''.join(result)
+
+# Runtime: 577 ms
+# Memory Usage: 14.3 MB
