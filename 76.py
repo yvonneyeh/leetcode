@@ -38,3 +38,46 @@ s and t consist of uppercase and lowercase English letters.
 Follow up: Could you find an algorithm that runs in O(m + n) time?
 
 """
+
+class Solution:
+    def minWindow(self, s: str, t: str) -> str:
+
+        # have = count of matching chars
+        # keep track of 2 pointers, left and right
+        # increment r while the have is less than need (len t)
+        # shrink window while have = need
+
+        if t == "": return ""
+
+        l = 0
+        have = 0
+        need = len(t)
+        target = {}
+        window = {}
+        result = [0, 0]
+        res_len = float("infinity")
+
+        for letter in t:
+            target[letter] = target.get(letter, 0) + 1
+
+        for r, letter in enumerate(s):
+            window[letter] = window.get(letter, 0) + 1
+
+            if letter in target and target[letter] == window[letter]:
+                have += 1
+
+            while have == need: # update our result
+
+                if (r - l + 1) < res_len:
+                    result = [l, r]
+                    res_len = r - l + 1
+                # pop from left of window
+                window[s[l]] -= 1
+                if s[l] in target and target[s[l]] > window[s[l]]:
+                    have -= 1
+                l += 1
+
+        l, r = result
+
+        return s[l:r+1]
+            
