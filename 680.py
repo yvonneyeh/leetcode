@@ -39,3 +39,37 @@ class Solution:
                 s2 = s[left+1:right+1] # remove left char, include right
                 return s1 == s1[::-1] or s2 == s2[::-1]
         return True
+
+class Solution:
+    def validPalindrome(self, s: str) -> bool:
+
+        if s == s[::-1]:
+            return True
+
+        r = len(s) - 1
+
+        for l in range(len(s) // 2):
+
+            if s[l] != s[r]:
+
+                s1 = s[:l] + s[l+1:]
+                s2 = s[:r] + s[r+1:]
+
+                print(s[:l], s[l+1:])
+                print(s[:r], s[r+1:])
+
+                if s1 == s1[::-1] or s2 == s2[::-1]:
+                    return True
+                break
+
+            r -= 1
+        return False
+
+class Solution:
+    def validPalindrome(self, s: str) -> bool:
+        h, t = 0, len(s) - 1  # head and tail
+        while h < t:
+            if s[h] != s[t]:  # delete s[h] or s[t] and validate palindrome finally
+                 return s[h:t] == s[h:t][::-1] or s[h + 1:t + 1] == s[h + 1:t + 1][::-1]
+            h, t = h + 1, t - 1
+        return True
