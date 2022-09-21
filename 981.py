@@ -45,7 +45,7 @@ At most 2 * 105 calls will be made to set and get."""
 
 
 from collections import defaultdict
-class TimeMap:
+class TimeMap_1stAttempt:
 
     def __init__(self):
         self.map = defaultdict(list)
@@ -75,11 +75,50 @@ class TimeMap:
         return values[-1][1]
 
 
+from collections import defaultdict
+class TimeMap:
+
+    def __init__(self):
+        self.map = defaultdict(list)
+
+    def set(self, key: str, value: str, timestamp: int) -> None:
+        self.map[key].append([timestamp, value])
+
+    def get(self, key: str, timestamp: int) -> str:
+        # edgecase: not in map
+        if key not in self.map:
+            return ""
+
+        values = self.map[key]
+
+        # edgecase: time larger than last set time
+        if timestamp > values[-1][0]:
+            return values[-1][1]
+
+        # edgecase: time smaller than first set time
+        if timestamp < values[0][0]:
+            return ""
+
+        left = 0
+        right = len(values) - 1
+        while left <= right:
+            mid = (left + right) // 2
+            prev_time, value = values[mid]
+
+            if prev_time == timestamp:
+                return value
+            if prev_time > timestamp:
+                right = mid - 1
+            else:
+                left = mid + 1
+
+        #Return the matching value
+        if left<len(values)-1:
+            return values[left][1]
+        else:
+            return values[right][1]
+
 # Your TimeMap object will be instantiated and called as such:
 # obj = TimeMap()
 # obj.set(key,value,timestamp)
 # param_2 = obj.get(key,timestamp)
-
-# set - foo, bar, 3
-# set - foo, bar, 5
-# get - foo, 1
