@@ -35,3 +35,6 @@ class Solution:
                 return True
             seen[value] = i
         return False
+
+
+# Kadane's Algorithm
