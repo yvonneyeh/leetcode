@@ -66,4 +66,9 @@ class Solution:
         while second.next:
             first.next, first = second, first.next
             second.next, second = first, second.next
-        return 
+        return
+
+
+# find midpoint of LL
+# reverse 2nd half of list, so pointers point towards midpoint
+# merge 
