@@ -2,6 +2,19 @@
 # Given two strings s and t, return true if t is an anagram of s, and false otherwise.
 
 class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+
+        if sorted(s) == sorted(t):
+            return True
+
+        return False
+
+# Runtime 109 ms Beats 33.79%
+# Memory 15.2 MB Beats 11.45%
+
+class Solution:
     def isAnagram1(self, s: str, t: str) -> bool:
 
         # if length of both words are not the same return false
