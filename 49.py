@@ -65,3 +65,22 @@ class Solution:
 
     # Runtime: 127 ms
     # Memory: 19.7 MB
+
+
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        # dictionary of counts of letters
+        # count : words
+        # get ord - unicode num for index
+        # look at each letter in string, add to count (list can't be key, tuple key)
+        #
+
+        result = collections.defaultdict(list)
+
+        for s in strs:
+            count = [0] * 26
+            for c in s:
+                count[ord(c) - ord("a")] += 1
+            result[tuple(count)].append(s)
+
+        return result.values()
