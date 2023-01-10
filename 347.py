@@ -37,7 +37,7 @@ class Solution:
         # Push all (item, -ve freq) pairs into heap
         # Pop k items from heap and append to a result list
         # return list
-        
+
         if not nums:
         	return []
 
@@ -83,7 +83,7 @@ class Solution:
             frequency[count].append(num)
 
 
-        for i in range(len(frequency)-1, 0, -1):
+        for i in range(len(frequency)-1, 0, -1): # last index, to zero, descending order
             for n in frequency[i]:
                 result.append(n)
             if len(result) == k:
