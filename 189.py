@@ -67,3 +67,33 @@ class Solution:
             nums[l], nums[r] = nums[r], nums[l]
             l += 1
             r -= 1
+
+# helper function
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+
+        def rotate_subarray(l, r):
+            while l < r:
+                nums[l], nums[r] = nums[r], nums[l]
+                l += 1
+                r -= 1
+
+        k = k % len(nums)
+        l = 0
+        r = len(nums) - 1
+
+        # reverse array
+        rotate_subarray(l, r)
+
+        # rotate first half of array
+        l = 0
+        r = k - 1
+        rotate_subarray(l, r)
+
+        # rotate second half of array
+        l = k
+        r = len(nums) - 1
+        rotate_subarray(l, r)
