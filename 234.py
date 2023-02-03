@@ -44,3 +44,43 @@ def createPalindromeLL(arr: list[int]) -> Node:
         curr = curr.next
 
     return sentinel.next
+
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+
+        slow = head
+        fast = head
+
+        # find middle
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        # reverse 2nd half
+        prev = None
+        current = slow
+        while current:
+            temp = current.next
+            current.next = prev
+            prev = current
+            current = temp
+
+        # check from front to back
+        left = head
+        right = prev
+        while right:
+            if left.val != right.val:
+                return False
+            left = left.next
+            right = right.next
+
+        return True
+
+
+            
