@@ -83,4 +83,36 @@ class Solution:
         return True
 
 
-            
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+
+    # find middle of linked list
+    # reverse second half of array
+    # return true if second half matches first half
+
+        slow = fast = head
+
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        prev = None
+        original_next = None
+
+        # prev -> slow -> slow.next
+
+        while slow:
+            original_next = slow.next
+            slow.next = prev
+            prev = slow
+            slow = original_next
+
+        mid = prev
+
+        while head and mid:
+            if head.val != mid.val:
+                return False
+            head = head.next
+            mid = mid.next
+
+        return True
