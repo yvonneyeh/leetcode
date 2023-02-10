@@ -63,13 +63,28 @@ class Recursive:
         return self.reverse(n, node)
 
 
+
+    # Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         prev = None
         current = head
 
-        while current:
-            temp = current.next
+        def reverse(prev, current):
+
+            if not current:
+                return prev
+
+            original_next = current.next
             current.next = prev
             prev = current
-            current = temp
+            current = original_next
 
-        return prev
+            return reverse(prev, current)
+
+        return reverse(prev, current)
