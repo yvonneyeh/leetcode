@@ -1,3 +1,5 @@
+#1021. Remove Outermost Parentheses
+
 class Solution:
     def removeOuterParentheses(self, S: str) -> str:
         result = []
@@ -24,13 +26,15 @@ class Solution:
 
         return ''.join(result)
 
-def removeOuterParentheses(s: str) -> str:
-    popen, result = 0, []
-    for x in S:
-        if x==')':
-            popen -= 1
-        if popen>0:
-            result.append(x)
-        if x=='(':
-            popen += 1
-    return ''.join(result)
+class Solution:
+    def removeOuterParentheses(self, S: str) -> str:
+        open = 0
+        result = []
+        for x in S:
+            if x == ')':
+                open -= 1
+            if open > 0:
+                result.append(x)
+            if x == '(':
+                open += 1
+        return ''.join(result)
