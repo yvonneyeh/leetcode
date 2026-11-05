@@ -29,7 +29,7 @@ nums is sorted in ascending order.
 
 """
 
-class Solution:
+class Solution1:
     def search(self, nums: List[int], target: int) -> int:
         low, high = 0, len(nums) - 1
         while low <= high:
@@ -40,4 +40,22 @@ class Solution:
                 low = mid + 1
             else:
                 high = mid - 1
+        return -1
+
+
+
+class Solution2:
+    def search(self, nums: List[int], target: int) -> int:
+        low = 0
+        high = len(nums) - 1
+
+        while low <= high:
+            mid = (high + low) // 2
+            if nums[mid] > target:
+                high = mid - 1
+            elif nums[mid] < target:
+                low = mid + 1
+            else:
+            # nums[mid] == target
+                return mid
         return -1
