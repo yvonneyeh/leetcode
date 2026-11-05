@@ -8,3 +8,14 @@ class Solution:
 
 # Runtime: 116 ms, faster than 76.03% of Python3 online submissions for Contains Duplicate.
 # Memory Usage: 20.1 MB, less than 80.27% of Python3 online submissions for Contains Duplicate.
+
+class Solution:
+    def hasDuplicate(self, nums: List[int]) -> bool:
+        seen = set()
+
+        for num in nums:
+            if num in seen:
+                return True
+            seen.add(num)
+
+        return False
